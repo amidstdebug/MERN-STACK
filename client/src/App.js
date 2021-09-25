@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {AppBar, Container, Grid, Grow, Typography} from "@material-ui/core";
 import ig_logo from './images/ig_logo.png'
 import Posts from './components/Posts/Posts'
+import {getPosts} from "./actions/posts";
 import Form from './components/Form/Form'
 import useStyles from './styles'
+import {useDispatch} from "react-redux";
+
 //imports
 
 
 const App = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPosts())
+    }, [dispatch])
+
     // this used the useStyles class and its methods
     return (
         <Container maxwidth='lg'>
